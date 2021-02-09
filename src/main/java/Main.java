@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -8,15 +9,21 @@ public class Main {
         List<Square> squares = new ArrayList<>();
         Random random = new Random();
 
-        for(int i=0; i<100; i++){
-            squares.add(new Square(random.nextInt(50)+1));
+        for (int i = 0; i < 100; i++) {
+            squares.add(new Square(random.nextInt(100) + 1));
         }
         squares.forEach(System.out::println);
 
         // Podpunkt A
-        List<Square> ex1  = squares.stream().filter(square -> square.getArea() > square.getPerimeter()).collect(Collectors.toList());
+        List<Square> ex1 = squares.stream().filter(square -> square.getArea() > square.getPerimeter()).collect(Collectors.toList());
         System.out.println("----- Podpunkt A -----");
         ex1.forEach(System.out::println);
+
+        // Podpunkt B
+        List<Square> ex2 = squares.stream().sorted(Comparator.comparingDouble(Square::getPerimeter)).collect(Collectors.toList());
+        System.out.println("----- Podpunkt B -----");
+        ex2.forEach(System.out::println);
+
 
     }
 }
