@@ -47,5 +47,8 @@ public class Main {
         double sumAreaSquares = squares.stream().mapToDouble(Square::getArea).sum();
         System.out.println("----- Podpunkt E -----");
         System.out.println("Squares Area Sum: " + sumAreaSquares);
+
+        Map<Square, Double> squareAreaMap = squares.stream().collect(Collectors.toMap(square -> square, Square::getArea));
+        System.out.println(squareAreaMap);
     }
 }
