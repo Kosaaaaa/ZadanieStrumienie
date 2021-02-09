@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -24,6 +21,11 @@ public class Main {
         System.out.println("----- Podpunkt B -----");
         ex2.forEach(System.out::println);
 
-
+        // Podpunkt C
+        OptionalDouble ex3  = squares.stream().mapToDouble(Square::getPerimeter).average();
+        System.out.println("----- Podpunkt C -----");
+        if (ex3.isPresent()){
+            System.out.println(ex3.getAsDouble());
+        }
     }
 }
