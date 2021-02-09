@@ -42,5 +42,10 @@ public class Main {
         System.out.println("Squares Area Avg: " + finalSquaresAreaAvg);
         ex4.forEach(System.out::println);
 
+        //Podpunkt E
+//        double sumAreaSquares = squares.stream().map(Square::getArea).reduce(0.0, Double::sum);
+        double sumAreaSquares = squares.stream().mapToDouble(Square::getArea).sum();
+        System.out.println("----- Podpunkt E -----");
+        System.out.println("Squares Area Sum: " + sumAreaSquares);
     }
 }
