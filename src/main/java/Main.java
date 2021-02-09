@@ -22,10 +22,25 @@ public class Main {
         ex2.forEach(System.out::println);
 
         // Podpunkt C
-        OptionalDouble ex3  = squares.stream().mapToDouble(Square::getPerimeter).average();
+        OptionalDouble ex3 = squares.stream().mapToDouble(Square::getPerimeter).average();
         System.out.println("----- Podpunkt C -----");
-        if (ex3.isPresent()){
+        if (ex3.isPresent()) {
             System.out.println(ex3.getAsDouble());
         }
+
+        // Podpunkt D
+        OptionalDouble squaresAreaAvgOptional = squares.stream().mapToDouble(Square::getArea).average();
+        double squaresAreaAvg = 0;
+        System.out.println("----- Podpunkt D -----");
+        if (squaresAreaAvgOptional.isPresent()) {
+            squaresAreaAvg = squaresAreaAvgOptional.getAsDouble();
+        }
+        double finalSquaresAreaAvg = squaresAreaAvg;
+        List<Square> ex4 = squares.stream().filter(square -> {
+            return square.getArea() < finalSquaresAreaAvg;
+        }).sorted((s1, s2) -> Double.compare(s2.getArea(), s1.getArea())).collect(Collectors.toList());
+        System.out.println("Squares Area Avg: " + finalSquaresAreaAvg);
+        ex4.forEach(System.out::println);
+
     }
 }
